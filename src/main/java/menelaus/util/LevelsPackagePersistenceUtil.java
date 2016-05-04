@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import menelaus.model.LevelsPackage;
+import menelaus.view.game.GameWindowFrame;
 
 /**
  * Utility methods to load/save LevelsPackages to and from disk.
@@ -37,10 +38,18 @@ public class LevelsPackagePersistenceUtil {
 	 * @throws ClassNotFoundException 
 	 */
     public static LevelsPackage fromFile(File inputFile) throws IOException, ClassNotFoundException {
-        FileInputStream fileToRead = new FileInputStream(inputFile);
-        ObjectInputStream objectToRead = new ObjectInputStream(fileToRead);
-        Object obj = objectToRead.readObject();
-        objectToRead.close();
+//    	File f = new File("default-levels");
+//        FileInputStream fileToRead = new FileInputStream(inputFile);
+//        ObjectInputStream objectToRead = new ObjectInputStream(fileToRead);
+//        Object obj = objectToRead.readObject();
+//        objectToRead.close();
+    	InputStream fileToRead;
+    	fileToRead = LevelsPackagePersistenceUtil.class.getResourceAsStream("/default-levels");
+
+//	        FileInputStream fileToRead = new FileInputStream(f);
+	        ObjectInputStream objectToRead = new ObjectInputStream(fileToRead);
+	        Object obj = objectToRead.readObject();
+	        objectToRead.close();
         
         return (LevelsPackage) obj;
     }

@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.net.URL;
+import java.nio.file.Path;
 
 /**
  * The window frame that holds all the panels.
@@ -57,9 +59,16 @@ public class GameWindowFrame extends JFrame {
         });
 
         try {
-            levelsPackage = LevelsPackagePersistenceUtil.fromFile(new File(DEFAULT_PACKAGE_NAME));
-            savedGamesUtil = new SavedGamesUtil(new File(SAVED_GAMES_NAME));
-            recentlyPLayedLevelsPackage = levelsPackage;
+//        	String dlPath = GameWindowFrame.getInstance().getClass().getResource(DEFAULT_PACKAGE_NAME).getFile();
+//        	String dlPath = this.getClass().getResource(DEFAULT_PACKAGE_NAME).getFile();
+
+    		File f = new File("default-levels.boba");
+        	
+    		levelsPackage = LevelsPackagePersistenceUtil.fromFile(f);
+//	    	levelsPackage = LevelsPackagePersistenceUtil.fromFile(new File(dlPath));
+	        savedGamesUtil = new SavedGamesUtil(new File(SAVED_GAMES_NAME));
+	        recentlyPLayedLevelsPackage = levelsPackage;
+
 
             contentPane = new HomeScreen();
 //			Thread.sleep(2000);
