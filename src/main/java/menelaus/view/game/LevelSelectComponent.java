@@ -91,6 +91,10 @@ public class LevelSelectComponent extends JPanel {
 		}
 		
 		JLabel lblLevelName = new JLabel(levelName);
+		if (playableParam == false) {
+			lblLevelName.setText("**********");
+		}
+		
 		lblLevelName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevelName.setMaximumSize(new Dimension(120, 16));
 		
