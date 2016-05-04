@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.net.URL;
+import java.nio.file.Path;
 
 /**
  * The window frame that holds all the panels.
@@ -19,6 +21,7 @@ import java.io.File;
  */
 public class GameWindowFrame extends JFrame {
     private final static String DEFAULT_PACKAGE_NAME = "default-levels.boba";
+    private final static String DEFAULT_PACKAGE_EXPORT_NAME = "/default-levels.boba";
     private final static String SAVED_GAMES_NAME = "saved-games.boba";
 
     private KabasujiPanel contentPane;
@@ -57,9 +60,11 @@ public class GameWindowFrame extends JFrame {
         });
 
         try {
-            levelsPackage = LevelsPackagePersistenceUtil.fromFile(new File(DEFAULT_PACKAGE_NAME));
-            savedGamesUtil = new SavedGamesUtil(new File(SAVED_GAMES_NAME));
-            recentlyPLayedLevelsPackage = levelsPackage;
+//    		File f = new File("default-levels.boba");
+    		levelsPackage = LevelsPackagePersistenceUtil.fromFile(DEFAULT_PACKAGE_EXPORT_NAME);
+	        savedGamesUtil = new SavedGamesUtil(new File(SAVED_GAMES_NAME));
+	        recentlyPLayedLevelsPackage = levelsPackage;
+
 
             contentPane = new HomeScreen();
 //			Thread.sleep(2000);
