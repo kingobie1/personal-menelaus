@@ -1,0 +1,4 @@
+language: java
+script: gradle check -Djava.awt.headless=true
+notifications:
+  slack: cs-diaz:fcT9kcwSjsdNXQfize2QOh2j
