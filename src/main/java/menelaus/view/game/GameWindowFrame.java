@@ -21,6 +21,7 @@ import java.nio.file.Path;
  */
 public class GameWindowFrame extends JFrame {
     private final static String DEFAULT_PACKAGE_NAME = "default-levels.boba";
+    private final static String DEFAULT_PACKAGE_EXPORT_NAME = "/default-levels.boba";
     private final static String SAVED_GAMES_NAME = "saved-games.boba";
 
     private KabasujiPanel contentPane;
@@ -59,13 +60,8 @@ public class GameWindowFrame extends JFrame {
         });
 
         try {
-//        	String dlPath = GameWindowFrame.getInstance().getClass().getResource(DEFAULT_PACKAGE_NAME).getFile();
-//        	String dlPath = this.getClass().getResource(DEFAULT_PACKAGE_NAME).getFile();
-
-    		File f = new File("default-levels.boba");
-        	
-    		levelsPackage = LevelsPackagePersistenceUtil.fromFile(f);
-//	    	levelsPackage = LevelsPackagePersistenceUtil.fromFile(new File(dlPath));
+//    		File f = new File("default-levels.boba");
+    		levelsPackage = LevelsPackagePersistenceUtil.fromFile(DEFAULT_PACKAGE_EXPORT_NAME);
 	        savedGamesUtil = new SavedGamesUtil(new File(SAVED_GAMES_NAME));
 	        recentlyPLayedLevelsPackage = levelsPackage;
 
